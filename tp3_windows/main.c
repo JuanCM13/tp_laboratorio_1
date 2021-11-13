@@ -32,6 +32,7 @@ int main()
     int respuestaEliminarEmpleado;
     int respuestaSaveText;
     int respuestaSaveBinary;
+    int respuestaOrdenamiento;
 
 
     int banderaControl;
@@ -130,154 +131,134 @@ int main()
 
             case 3:
 
-            	if(banderaControl == 1)
-            	{
-					 if(controller_addEmployee(listaEmpleados) == 0)
-					 {
-						 printf("--El alta de empleado se realizo de forma exitosa..\n");
-					 }
-					 else
-					 {
-						 printf("--Algo fallo en la carga del empleado, reintente..\n");
-					 }
-            	}
-            	else
-            	{
-            		printf("--Para ingresar a esta opcion se debe traer los datos de algun archivo antes, acceda a la opcion 1 o 2 previamente..\n");
-            	}
+				 if(controller_addEmployee(listaEmpleados) == 0)
+				 {
+					 printf("--El alta de empleado se realizo de forma exitosa..\n");
+				 }
+				 else
+				 {
+					 printf("--Algo fallo en la carga del empleado, reintente..\n");
+				 }
 
             break;
 
             case 4:
 
-            	if(banderaControl == 1)
-            	{
-					respuestaModificacionEmpleado = controller_editEmployee(listaEmpleados);
+				respuestaModificacionEmpleado = controller_editEmployee(listaEmpleados);
 
-					switch(respuestaModificacionEmpleado)
-					{
-						case 0:
+				switch(respuestaModificacionEmpleado)
+				{
+					case 0:
 
-						printf("--La modificacion se realizo con exito..\n");
+					printf("--La modificacion se realizo con exito..\n");
 
-						break;
+					break;
 
-						case -1:
+					case -1:
 
-							printf("--Fallo la modificacion del empleado, reintente..\n");
+						printf("--Fallo la modificacion del empleado, reintente..\n");
 
-						break;
+					break;
 
-						case -2:
+					case -2:
 
-							printf("--La operacion fue cancelada..\n");
+						printf("--La operacion fue cancelada..\n");
 
-						break;
+					break;
 
-						case -3:
+					case -3:
 
-							printf("--La lista se encuentra vacia..\n");
+						printf("--La lista se encuentra vacia..\n");
 
-						break;
-					}
-            	}
-            	else
-            	{
-            		printf("--Para ingresar a esta opcion se debe traer los datos de algun archivo antes, acceda a la opcion 1 o 2 previamente..\n");
-            	}
+					break;
+				}
+
 
             break;
 
             case 5:
 
-            	if(banderaControl == 1)
-            	{
-					respuestaEliminarEmpleado = controller_removeEmployee(listaEmpleados);
+				respuestaEliminarEmpleado = controller_removeEmployee(listaEmpleados);
 
-					switch(respuestaEliminarEmpleado)
-					{
-						case 0:
-
-						printf("--La baja de empleado se realizo con exito..\n");
-
-						break;
-
-						case -1:
-
-							printf("--Fallo la baja del empleado, reintente..\n");
-
-						break;
-
-						case -2:
-
-							printf("--La operacion fue cancelada..\n");
-
-						break;
-
-						case -3:
-
-							printf("--La lista se encuentra vacia..\n");
-
-						break;
-					}
-            	}
-				else
+				switch(respuestaEliminarEmpleado)
 				{
-					printf("--Para ingresar a esta opcion se debe traer los datos de algun archivo antes, acceda a la opcion 1 o 2 previamente..\n");
+					case 0:
+
+					printf("--La baja de empleado se realizo con exito..\n");
+
+					break;
+
+					case -1:
+
+						printf("--Fallo la baja del empleado, reintente..\n");
+
+					break;
+
+					case -2:
+
+						printf("--La operacion fue cancelada..\n");
+
+					break;
+
+					case -3:
+
+						printf("--La lista se encuentra vacia..\n");
+
+					break;
 				}
 
             break;
 
             case 6:
 
-            	if(banderaControl == 1)
-            	{
-            		respuestaImprimirLista = controller_ListEmployee(listaEmpleados);
-            		switch(respuestaImprimirLista)
-            		{
-            			case -1:
-
-            				printf("--Fallo la ejecucion de la opcion, reintente..");
-
-            			break;
-
-            			case -2:
-
-            				printf("--Fallo la impresion del listado, reintente..");
-
-            			break;
-
-            			case -3:
-
-            				printf("--La lista se encuentra vacia..");
-
-            			break;
-            		}
-            	}
-				else
+				respuestaImprimirLista = controller_ListEmployee(listaEmpleados);
+				switch(respuestaImprimirLista)
 				{
-					printf("--Para ingresar a esta opcion se debe traer los datos de algun archivo antes, acceda a la opcion 1 o 2 previamente..\n");
+					case -1:
+
+						printf("--Fallo la ejecucion de la opcion, reintente..");
+
+					break;
+
+					case -2:
+
+						printf("--Fallo la impresion del listado, reintente..");
+
+					break;
+
+					case -3:
+
+						printf("--La lista se encuentra vacia..");
+
+					break;
 				}
 
             break;
 
             case 7:
 
-            	if(banderaControl == 1)
+            	respuestaOrdenamiento = controller_sortEmployee(listaEmpleados);
+
+            	switch(respuestaOrdenamiento)
             	{
-					if(controller_sortEmployee(listaEmpleados) == 0)
-					{
-						printf("--Se ordeno de manera exitosa..\n");
-					}
-					else
-					{
-						printf("--El ordenamiento fallo..\n");
-					}
+            		case 0:
+
+            			printf("--Se ordeno de manera exitosa..\n");
+
+            		break;
+
+            		case -1:
+
+            			printf("--El ordenamiento fallo..\n");
+
+            		break;
+
+            		case -2:
+
+            			printf("--La lista se encuentra vacia..\n");
+
+            		break;
             	}
-				else
-				{
-					printf("--Para ingresar a esta opcion se debe traer los datos de algun archivo antes, acceda a la opcion 1 o 2 previamente..\n");
-				}
 
             break;
 

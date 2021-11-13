@@ -795,7 +795,7 @@ int eliminarEmpleado(LinkedList* listaEmpleados)
 /** \brief Ordena lista de empleados ascendente o descendentemente segun el campo seleccionado
  *
  * \param LinkedList* listaEmpleados
- * \return int 0 si sale todo ok, -1 //FALLO Nulls
+ * \return int 0 si sale todo ok, -1 //FALLO Nulls -2; //la lista ta vacia
  *
  */
 
@@ -804,50 +804,59 @@ int ordenarEmpleados(LinkedList* listaEmpleados)
 	int ret;
 	int respuesta;
 	int orden;
+	int largo;
 
 	ret = -1;
 
 	if(listaEmpleados != NULL)
 	{
-		Get_numeroConLimites("Por que campo desea ordenar? \n1-Nombre\n2-IDs\n3-Horas Trabajadas\n4-Sueldo","Error, ingrese una opcion entre las dadas..",1,4,&respuesta);
+		largo = ll_len(listaEmpleados);
 
-		Get_numeroConLimites("Ingrese 1 para ordenar de manera ascendente o 0 para ordenar de manera descendente..","Error, ingrese una opcion entre las dadas..",0,1,&orden);
-
-		switch(respuesta)
+		if(largo > 0)
 		{
-			case 1:
+			Get_numeroConLimites("Por que campo desea ordenar? \n1-Nombre\n2-IDs\n3-Horas Trabajadas\n4-Sueldo","Error, ingrese una opcion entre las dadas..",1,4,&respuesta);
 
-				//printf("Entre\n");
-				ll_sort(listaEmpleados, compararEmpleadosPorNombre, orden);
-				ret = 0;
+			Get_numeroConLimites("Ingrese 1 para ordenar de manera ascendente o 0 para ordenar de manera descendente..","Error, ingrese una opcion entre las dadas..",0,1,&orden);
 
-			break;
+			switch(respuesta)
+			{
+				case 1:
 
-			case 2:
+					//printf("Entre\n");
+					ll_sort(listaEmpleados, compararEmpleadosPorNombre, orden);
+					ret = 0;
 
-				ll_sort(listaEmpleados, compararEmpleadosPorId, orden);
+				break;
 
-				ret = 0;
+				case 2:
 
-			break;
+					ll_sort(listaEmpleados, compararEmpleadosPorId, orden);
 
-			case 3:
+					ret = 0;
 
-				ll_sort(listaEmpleados, compararEmpleadosPorHorasTrabajadas, orden);
+				break;
 
-				ret = 0;
+				case 3:
 
-			break;
+					ll_sort(listaEmpleados, compararEmpleadosPorHorasTrabajadas, orden);
 
-			case 4:
+					ret = 0;
 
-				ll_sort(listaEmpleados, compararEmpleadosPorSueldo, orden);
+				break;
 
-				ret = 0;
+				case 4:
 
-			break;
+					ll_sort(listaEmpleados, compararEmpleadosPorSueldo, orden);
+
+					ret = 0;
+
+				break;
+			}
 		}
-
+		else
+		{
+			ret = -2; //la lista ta vacia
+		}
 	}
 
 
