@@ -114,9 +114,9 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
 			pContador = fopen("Contador.txt" , "w");
 			fprintf(pContador , "1000");
 
-			//fclose(pContador);
+			fclose(pContador);
 
-			//fopen("Contador.txt" , "r");
+			fopen("Contador.txt" , "r");
 			//No lo cierro asi si no llega a estar creado pasa al prox if y hace la operacion
 		}
 
